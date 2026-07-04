@@ -1,16 +1,19 @@
-# Version 1.3
+# Version 1.4
 #!/bin/bash
 
 # Define accurate absolute infrastructure paths
 WP_DIR="$HOME/agentic-factory/wp-multisite"
 AP_DIR="$HOME/activepieces"
 AT_DIR="$HOME/agentic-factory/atrium"
+COG_DIR="$HOME/agentic-factory/mempalace"
 
 case "$1" in
     start)
         echo "=== Launching Artisanal Automations Core Environment ==="
         echo "Starting Ollama Engine..."
         sudo systemctl start ollama 2>/dev/null || ollama serve > /dev/null 2>&1 &
+        echo "Igniting Cognitive Vector Memory..."
+        cd "$COG_DIR" && docker compose up -d || echo "Cognitive compose failed."
         echo "Igniting WordPress Multi-Tenant Staging Stack..."
         cd "$WP_DIR" && docker compose up -d
         echo "Igniting Client Portal (Atrium)..."
@@ -22,6 +25,7 @@ case "$1" in
     stop)
         echo "=== Halting Artisanal Automations Core Environment ==="
         echo "Stopping Container Architectures..."
+        cd "$COG_DIR" && docker compose down 2>/dev/null
         cd "$WP_DIR" && docker compose down
         cd "$AT_DIR" && docker compose down 2>/dev/null
         cd "$AP_DIR" && docker compose down
