@@ -1,0 +1,17 @@
+# Version 1.2
+services:
+  atrium-app:
+    image: vibralabs/atrium:latest
+    container_name: atrium-portal
+    restart: unless-stopped
+    ports:
+      - "8001:8080"
+    environment:
+      - BETTER_AUTH_SECRET=kP5B7y9U3+6vW1mN4xQ8zR2tT0sL5oM7aC4rV9yE1zA=
+      - DB_CONNECTION=sqlite
+    volumes:
+      - atrium_data:/app/data
+
+volumes:
+  atrium_data:
+    driver: local

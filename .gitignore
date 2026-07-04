@@ -1,0 +1,14 @@
+# Ignore Docker Storage Volumes
+wp-multisite/wp_data/
+wp-multisite/db_data/
+activepieces/data/
+atrium/atrium_data/
+
+# Ignore Cryptographic Secrets
+.env
+*.env
+core-control/keys/
+
+# Ignore OS Artifacts
+.DS_Store
+Thumbs.db
