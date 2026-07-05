@@ -1,5 +1,5 @@
 {
-  "displayName": "Discord Command Matrix",
+  "displayName": "Discord Command Matrix (Master)",
   "trigger": {
     "name": "trigger",
     "type": "PIECE_TRIGGER",
@@ -22,7 +22,9 @@
         "input": {
           "method": "POST",
           "url": "http://172.17.0.1:11434/api/generate",
-          "headers": {},
+          "headers": {
+            "Content-Type": "application/json"
+          },
           "queryParams": {},
           "bodyType": "JSON",
           "body": {
