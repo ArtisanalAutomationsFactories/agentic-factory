@@ -12,3 +12,4 @@ core-control/keys/
 # Ignore OS Artifacts
 .DS_Store
 Thumbs.db
+mempalace/venv/
